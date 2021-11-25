@@ -37,6 +37,11 @@ class Competences
      */
     private $createdAt;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="competences")
+     */
+    private $user;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -86,6 +91,18 @@ class Competences
     public function setCreatedAt(\DateTimeImmutable $createdAt): self
     {
         $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }
